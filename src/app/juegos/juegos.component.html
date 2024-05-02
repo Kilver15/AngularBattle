@@ -1,0 +1,30 @@
+<div class="container" [@fadeInOut]>
+    <div class="row justify-content-end mt-3">
+        <div class="col-2">
+            <button class="btn btn-primary" [disabled]="isLoading" (click)="crearPartida()">
+                <span *ngIf="!isLoading">Crear partida</span>
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Host</th>
+                        <th scope="col">   </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let juego of juegos">
+                        <td>{{juego.id}}</td>
+                        <td>{{getUserNombre(juego.jugador1)}}</td>
+                        <td>
+                            <button (click)="unirsePartida(juego.id!)" class="btn btn-primary btn-spacing">Unirse</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

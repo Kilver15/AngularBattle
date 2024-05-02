@@ -1,0 +1,102 @@
+.battle-board {
+  table {
+    border-collapse: collapse;
+
+    th, td {
+      width: 30px;
+      height: 30px;
+      border: 1px solid black;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: lightgray; /* Add a background color */
+      color: white; /* Add a text color */
+    }
+    th {
+      background-color: darkgray; /* Add a different background color for table headers */
+    }
+    td:hover {
+      background-color: gray; /* Change the background color on hover */
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.battle-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.board-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-4 {
+  flex: 1;
+  margin: 0 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: lightgray;
+  color: white;
+}
+
+th {
+  background-color: darkgray;
+}
+
+td:hover {
+  background-color: gray;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.bi-train-freight-front-fill {
+  color: blue; /* Add a color for the train icon */
+}
+
+.bi-fire {
+  color: red; /* Add a color for the fire icon */
+}
+
+.bi-ban {
+  color: rgb(10, 150, 94); /* Add a color for the ban icon */
+}

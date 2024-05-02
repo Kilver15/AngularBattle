@@ -1,0 +1,73 @@
+<div class="battle-board container"  *ngIf="gamestarted === 1 && (!ganador && !perdedor)">
+    <h1 *ngIf="turno">Tu turno</h1>
+    <h1 *ngIf="!turno">Turno del oponente</h1>
+    <div class="row">
+        <div class="board-container">
+            <div class="col-4">
+                <h2>Tu tablero</h2>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let column of columns">{{ column }}</th>
+                    </tr>
+                    <tr *ngFor="let row of rows; let i = index">
+                        <th>{{ i }}</th>
+                        <td  *ngFor="let column of columns" >
+                            <span *ngIf="myBoard[i][columns.indexOf(column)]">
+                                <i class="bi bi-train-freight-front-fill"></i>
+                            </span>
+                            <span *ngIf="hit[i][columns.indexOf(column)]">
+                                <i class="bi bi-fire"></i>
+                            </span>
+                            <span *ngIf="noHit[i][columns.indexOf(column)]">
+                                <i class="bi bi-ban"></i>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-4">
+                <h2>Rival</h2>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let column of columns">{{ column }}</th>
+                    </tr>
+                    <tr *ngFor="let row of rows; let i = index">
+                        <th>{{ i }}</th>
+                        <td *ngFor="let column of columns" (click)="makeMove(i, column)">
+                            <span *ngIf="opponentBoard[i][columns.indexOf(column)]">X</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="gamestarted === 0">
+    <div class="spinner"></div>
+    <div class="loading-text">Esperando para iniciar...</div>
+    <div>
+        <button class="btn btn-danger mt-3"(click)="salir()">Salir</button>
+    </div>
+</div>
+<div class="container" *ngIf="ganador">
+    <!-- Modal para el ganador -->
+    <div class="card">
+        <div class="card-body">
+        <h3>¡Felicidades, eres el ganador!</h3>
+        <button class="btn btn-primary" (click)="salir()">Cerrar</button>
+        </div>
+    </div>
+    </div>
+
+<div class="container" *ngIf="perdedor == true">
+    <!-- Modal para el perdedor -->
+    <div class="card">
+        <div class="card-body">
+        <h3>¡Lo sentimos, perdiste!</h3>
+        <button class="btn btn-primary" (click)="salir()">Cerrar</button>
+        </div>
+    </div>
+    </div>
+

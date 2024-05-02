@@ -1,0 +1,26 @@
+<div class="container" [@fadeInOut]>
+    <div class="row mt-3">
+        <div class="col-12">
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Vs</th>
+                        <th scope="col">Ganadas</th>
+                        <th scope="col">Perdidas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let nombre of getUniqueNames()">
+                        <tr *ngFor="let juego of juegos">
+                            <ng-container *ngIf="getUserNombre(juego.jugador1 === juego.jugador2 ? (juego.jugador1 || 0) : (juego.jugador2 || 0)) === nombre">
+                                <td>{{nombre}}</td>
+                                <td>{{countWinners1()}}</td>
+                                <td>{{countWinners2()}}</td>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

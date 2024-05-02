@@ -1,0 +1,26 @@
+<div class="container login-container" [@fadeInOut]>
+  <div class="row justify-content-center">
+     <div class="col-md-6 mt-3">
+       <div class="card">
+         <div class="card-header">Verificacion de 2 pasos</div>
+         <div class="card-body">
+          <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+            <label for="code">Verificacion en 2 pasos</label>
+            <input type="number" id="code" formControlName="code" class="form-control" placeholder="XXXXXX" [ngClass]="{ 'is-invalid': authForm.get('code')?.touched && authForm.get('code')?.invalid }">
+            <div *ngIf="authForm.get('code')?.touched && authForm.get('code')?.invalid" class="invalid-feedback">
+              <div *ngIf="authForm.get('code')?.errors?.['required']">El codigo es requerido.</div>
+              <div *ngIf="authForm.get('code')?.errors?.['minlength']">El codigo debe tener 6 caracteres.</div>
+            </div>
+          </div>
+          <button type="submit" [disabled]="isLoading" class="btn btn-primary" (click)="onSubmit()">
+            <span *ngIf="!isLoading">Ingresar</span>
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+           </button>
+          </form>
+         </div>
+       </div>
+     </div>
+  </div>
+</div>
+ 
